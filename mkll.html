@@ -1,0 +1,49 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copy Text and Redirect</title>
+<style>
+  /* ...（CSS样式保持不变）... */
+</style>
+<script>
+function copyTextToClipboard(text) {
+  var textArea = document.createElement("textarea");
+  // ...（其余的样式设置保持不变）...
+
+  textArea.value = text;
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+
+  try {
+    var successful = document.execCommand('copy');
+    var msg = successful ? '正在转到下载！' : '复制失败！';
+    alert(msg); // 使用alert来显示提示信息
+  } catch (err) {
+    alert('复制失败，请使用 Ctrl+C 复制内容。');
+  }
+
+  document.body.removeChild(textArea);
+}
+
+function copyTextAndRedirect() {
+  var content = document.getElementById("content").innerText;
+  copyTextToClipboard(content);
+  // 跳转前延时，以确保用户看到复制成功的提示
+  setTimeout(function() {
+    window.location.href = "https://pan.ly93.cc/f/o4jkim/57N_6.0.0.apk";
+  }, 1000); // 延时1秒
+}
+</script>
+</head>
+<body>
+
+<p id="content">https://pan.ly93.cc/f/o4jkim/57N_6.0.0.apk</p>
+<button onclick="copyTextAndRedirect()">下载</button>
+
+</body>
+</html>
+ 
